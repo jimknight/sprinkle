@@ -22,9 +22,8 @@ package :passenger, :provides => :appserver do
   conf_file = '/etc/apache2/mods-available/passenger.conf'
   
   gem 'passenger' do
-  # post :install, gem 'passenger-install-apache2-module'
-    # version gem_version
-    # # cleanup any other versions of passenger we had installed
+    version gem_version
+    # cleanup any other versions of passenger we had installed
     pre :install, 'gem uninstall passenger -a -x || true'
     pre :install, 'rm -f /etc/apache2/mods-available/passenger.*'
     post :install, 'passenger-install-apache2-module --auto'
@@ -35,11 +34,11 @@ package :passenger, :provides => :appserver do
     post :install, '/etc/init.d/apache2 restart'
   end
   
-  # verify do
-  #   # has_file "/etc/apache2/mods-available/passenger.load"
-  #   # has_gem 'passenger'
-  #   # has_process 'apache2'
-  # end
+  verify do
+    has_file "/etc/apache2/mods-available/passenger.load"
+    has_gem 'passenger'
+    has_process 'apache2'
+  end
   
   requires :apache
   requires :apache2_prefork_dev

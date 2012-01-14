@@ -49,4 +49,4 @@ production:
   encoding: unicode
   database: sprinkle_production
   pool: 5
-  username: <%= `whoami` %>
+  username: postgres
