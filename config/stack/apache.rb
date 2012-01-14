@@ -22,7 +22,6 @@ package :passenger, :provides => :appserver do
   conf_file = '/etc/apache2/mods-available/passenger.conf'
   
   gem 'passenger' do
-    version gem_version
     # cleanup any other versions of passenger we had installed
     pre :install, 'gem uninstall passenger -a -x || true'
     pre :install, 'rm -f /etc/apache2/mods-available/passenger.*'

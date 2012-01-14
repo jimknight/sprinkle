@@ -31,10 +31,11 @@ policy :stack, :roles => :app do
   # requires :nginx
   requires :build_essential
   requires :webserver               # Apache or Nginx
+    requires :ruby
   requires :appserver               # Passenger
   # requires :ruby_enterprise         # Ruby Enterprise edition
   requires :rails
-  requires :ruby
+
   requires :database                # MySQL or Postgres, also installs rubygems for each
   requires :sphinx
   # requires :scm                     # Git
