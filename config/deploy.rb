@@ -1,5 +1,4 @@
 require "bundler/capistrano"
-load "deploy/assets"
 
 set   :domain,        "69.172.229.224"
 role  :web,           domain
