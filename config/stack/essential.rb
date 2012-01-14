@@ -5,7 +5,7 @@ package :build_essential do
     pre :install, 'apt-get install libyaml-dev -y'
     pre :install, 'apt-get install vim -y'
   end
-  # verify do
-  #   has_executable 'vim'
-  # end
+  verify do
+    has_executable 'vim'
+  end
 end
