@@ -1,3 +1,4 @@
+require "bundler/capistrano"
 # Fill slice_url in - where you're installing your stack to
 role :app, "69.172.229.224"
 
@@ -7,7 +8,13 @@ set :user, "rails"
 default_run_options[:pty] = true
 
 set :application, "sprinkle"
-set :repository,  "set your repository location here"
+set :repository,  "git://github.com/jimknight/sprinkle.git"
+set :deploy_via, :copy
+
+set :user, 'rails' # Your username goes here
+set :use_sudo, false
+# set :domain, 'tweetni.com' # Your domain goes here
+set :deploy_to, "/home/#{user}/#{application}"
 
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
