@@ -16,6 +16,7 @@ $:<< File.join(File.dirname(__FILE__), 'stack')
 # stack/apache.rb
 
 require 'apache'
+require 'essential'
 require 'postgresql'
 require 'rails'
 require 'ruby'
@@ -28,6 +29,7 @@ require 'sphinx'
 # Build up your own and strip down your server until you get it right. 
 policy :stack, :roles => :app do
   # requires :nginx
+  requires :build_essential
   requires :webserver               # Apache or Nginx
   requires :appserver               # Passenger
   # requires :ruby_enterprise         # Ruby Enterprise edition
