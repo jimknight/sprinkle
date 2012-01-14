@@ -19,6 +19,12 @@ end
 gem 'jquery-rails'
 gem 'thinking-sphinx'
 
+group :deploy do
+  gem 'capistrano',     :require => false
+  gem 'capistrano-ext', :require => false
+  gem 'cap-recipes',    :require => false # apache, rails, thinking_sphinx, etc.
+end
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
