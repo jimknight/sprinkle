@@ -1,0 +1,13 @@
+development:
+  port: 9312
+  mem_limit: 128M
+test:
+  port: 9313
+  mem_limit: 128M
+production:
+  port: 9312
+  mem_limit: 128M
+  pid_file: /var/run/sphinx/searchd.pid
+  searchd_file_path: /var/www/karma/shared/db/sphinx
+  bin_path: /usr/local/bin # without this the delta index didn't work in production
+  thread_stack: 256K # for complex queries in production
