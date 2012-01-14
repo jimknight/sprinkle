@@ -24,6 +24,16 @@ before 'deploy:update_code' do
   run_locally 'git push origin master'
 end
 
+require 'cap_recipes/tasks/thinking_sphinx'
+
+# HACK: override ts symlink from cap-recipes, use -nfs
+namespace :thinking_sphinx do
+  desc "Copies the shared/config/sphinx yaml to release/config/"
+  task :symlink_config, :roles => :app do
+    run "ln -nfs #{shared_path}/config/sphinx.yml #{release_path}/config/sphinx.yml"
+  end
+end
+
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
   task :start do ; end
