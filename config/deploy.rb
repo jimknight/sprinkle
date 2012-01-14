@@ -24,6 +24,8 @@ before 'deploy:update_code' do
   run_locally 'git push origin master'
 end
 
+require 'cap_recipes/tasks/apache'
+require 'cap_recipes/tasks/passenger'
 require 'cap_recipes/tasks/thinking_sphinx'
 
 # HACK: override ts symlink from cap-recipes, use -nfs
