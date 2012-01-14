@@ -1,10 +1,10 @@
 package :postgres, :provides => :database do
   description 'PostgreSQL database'
   apt %w( postgresql postgresql-client libpq-dev )
-  
-  verify do
-    has_executable 'psql'
-  end
+  transfer 'config/stack/apache/pg_hba.conf', '/etc/postgresql/8.4/main/pg_hba.conf', :sudo => true
+  # verify do
+  #   has_executable 'psql'
+  # end
 
   optional :postgresql_driver
 end
