@@ -18,6 +18,12 @@ set :deploy_via, :copy
 set :deploy_to, "/home/#{user}/#{application}"
 
 # sudo -u postgres createdb sprinkle_production
+before 'deploy:update_code' do
+  run_locally "rake assets:precompile"
+  run_locally "git add public/assets"
+  run_locally "git commit -a -m 'automatic pre-deployment commit'"
+  run_locally 'git push origin master'
+end
 
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
